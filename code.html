@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>My project</title>
+    <title>JS Loop Test</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,13 +18,18 @@
     
     <link href="/css/site.css" rel="stylesheet">
     <link href="/css/prism.css" rel="stylesheet">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
     <!-- === Nav Section -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/img/Color logo - no background.png" class="d-inline-block align-text-top" height="24"> App Name</a>
+            <a class="navbar-brand" href="#"><img src="/img/Color logo - no background.png" class="appName d-inline-block align-text-top" height="24"> JS Loop Test</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,20 +60,70 @@
     <!-- === Main === -->
     <main class="flex-shrink-0">
         <div class="container py-4 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code</h2>
+            <h2 class="appName border-1 border-bottom border-dark">JS Loop Test</h2>
             <div class="row row-cols-1 row-cols-lg-2">
-                <div class="col-lg-8">
+                <div class=" col col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function helloWorld(){
-                            alert("Hello World");
+                        //Get values from UI
+                        //start or controller function
+                            function getValues(){
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+                                
+                         //parse in to integers
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+                        
+                        //validation if input is integer
+                            if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                let numbers = generateNumbers(startValue,endValue);
+                        
+                                //Output of numbers and HTML elements on UI
+                                displayNumbers(numbers);
+                            } 
+                            else {
+                                alert("Wrong input,please enter integers!!!");
+                            }
+                        }
+                        
+                        //Generate numbers from start value to end value
+                        //programs logic
+                            function generateNumbers(parStartValue, parEndValue) {
+                                let numbers = [];
+                        
+                                for (let i = parStartValue; i <= parEndValue; i++) {
+                                    numbers.push(i);
+                                }
+                                return numbers;
+                            }
+                        
+                        //Display even numbers Bold
+                            function displayNumbers(numbers){
+                           
+                                let templateRows ="";
+                        
+                                for (let index = 0; index < numbers.length; index++) {
+                                    
+                                    let nameClass = "even";
+                                    let number = numbers[index];
+                                   
+                                    if (number % 2 == 0) {
+                                        nameClass = "even";
+                                    } else {
+                                        nameClass ="odd"
+                                    }
+                                    templateRows += `<tr><td class="${nameClass}">${number}</td></tr>`; 
+                        
+                                }
+                        // input HTML element into UI
+                            document.getElementById("results").innerHTML = templateRows;
                         }
                         </code>
                     </pre>
                 </div>
-                <div class="col-lg-4">
-                    <h5>Hello World</h5>
-                    <p>Javascript script that calls functoin that displays message "Hello World".</p>
+                <div class="col col-lg-4">
+                    <h5>JS Loop Test</h5>
+                    <p>This is build with Javascript.As frontend code are implemented "for" loop, "if/else" statement and "Aray",to separate and show even and odd numbers.</p>
                 </div>
             </div>   
         </div>

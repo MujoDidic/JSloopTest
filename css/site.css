@@ -1,5 +1,5 @@
 :root{
-    --primary-color: #1d5888;
+    --primary-color: #127339;
     --secondary-color: #ff993b;
     --dark-color: #292929;
     --white-color: #e7e7e7;
@@ -7,6 +7,21 @@
 
 .body{
     color: var(--dark-color);
+}
+
+.even{
+    font-weight: bold;
+}
+
+.odd{
+    font-weight: 100;
+}
+
+.appName{
+    font-family: 'Racing Sans One', cursive;
+}
+.colorCSSbtn{
+    background-color: var(--primary-color);
 }
 
 nav{
