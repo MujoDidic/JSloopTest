@@ -7,6 +7,11 @@
 
 .body{
     color: var(--dark-color);
+    
+}
+
+.pColor{
+    color: var(--primary-color);
 }
 
 .even{
